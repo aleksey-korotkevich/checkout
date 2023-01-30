@@ -31,7 +31,6 @@ export default {
   border: 1px solid var(--stroke-color-main);
   border-radius: 12px;
   padding: 16px;
-  max-width: 230px;
   transition: border 0.3s;
 }
 .panel:hover {
