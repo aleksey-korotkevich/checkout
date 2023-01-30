@@ -11,10 +11,13 @@
           @click="selectedPaymentId = payment.id"
         >
           <template slot="payments">
-            <!-- hadn't much time to resolve issue with icons loading with dynamic src in Nuxtjs -->
+            <!-- 
+                hadn't much time to resolve issue with icons loading with dynamic src in Nuxtjs 
+                Found solution with require, but people say it is not the best one
+            -->
             <img
-              v-for="paymentOption of payment.payments"
-              :src="`/_nuxt/assets/icons/${paymentOption}.png`"
+              v-for="paymentOption of payment.paymentOptions"
+              :src="paymentOption"
             />
           </template>
         </SharedPanel>
@@ -53,7 +56,7 @@ export default Vue.extend({
       payments: [] as Array<{
         id: number
         label: string
-        payments: string[]
+        paymentOptions: string[]
         action: string
         policy: string
       }>,
@@ -74,7 +77,7 @@ export default Vue.extend({
           {
             id: 1,
             label: 'Оставить заявку на консультацию',
-            payments: [],
+            paymentOptions: [],
             action: 'Получить консультацию',
             policy:
               'Нажимая на кнопку, я соглашаюсь на <a href="#" target="_blank">обработку персональных данных</a> и с <a href="#" target="_blank">правилами пользования Платформой</a>',
@@ -82,7 +85,7 @@ export default Vue.extend({
           {
             id: 2,
             label: 'Оплатить всю сумму со скидкой 7000 ₽',
-            payments: ['visa', 'mir', 'mastercard'],
+            paymentOptions: ['visa', 'mir', 'mastercard'],
             action: 'Оплатить',
             policy:
               'Нажимая на кнопку, я соглашаюсь с <a href="#" target="_blank">публичной офертой</a> и <a href="#" target="_blank">политикой обработки персональных данных</a>',
@@ -90,7 +93,7 @@ export default Vue.extend({
           {
             id: 3,
             label: 'В рассрочку в Покупай со Сбером',
-            payments: ['sber'],
+            paymentOptions: ['sber'],
             action: 'Оплатить',
             policy:
               'Нажимая на кнопку, я соглашаюсь с <a href="#" target="_blank">публичной офертой</a> и <a href="#" target="_blank">политикой обработки персональных данных</a>',
@@ -98,14 +101,21 @@ export default Vue.extend({
           {
             id: 4,
             label: 'В рассрочку в Тинькофф',
-            payments: ['tinkoff'],
+            paymentOptions: ['tinkoff'],
             action: 'Оплатить',
             policy:
               'Нажимая на кнопку, я соглашаюсь с <a href="#" target="_blank">публичной офертой</a> и <a href="#" target="_blank">политикой обработки персональных данных</a>',
           },
         ]
 
-        this.payments = payments.slice(0, count)
+        this.payments = payments.slice(0, count).map((payment) => {
+          return {
+            ...payment,
+            paymentOptions: payment.paymentOptions.map((po) =>
+              require(`~/assets/icons/${po}.png`)
+            ),
+          }
+        })
         this.selectedPaymentId = this.payments[0].id
       }
     )
