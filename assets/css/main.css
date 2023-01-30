@@ -1,0 +1,66 @@
+@import './theme.css';
+
+@font-face {
+  font-family: 'Graphik LC TT';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/GraphikLCTT-VA-Regular.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: 'Graphik LC TT';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('~assets/fonts/GraphikLCTT-VA-Medium.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: 'Graphik LC TT';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('~assets/fonts/GraphikLCTT-VA-Semibold.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: 'Graphik LC TT';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~assets/fonts/GraphikLCTT-VA-Bold.woff2') format('truetype');
+}
+
+h4 {
+  font-family: 'Graphik LC TT';
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+}
+
+h5 {
+  font-family: 'Graphik LC TT';
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 0;
+}
+
+p {
+  font-family: 'Graphik LC TT';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--color-variable);
+}
+
+html, body, #__nuxt, #__layout {
+  height: 100%;
+}
