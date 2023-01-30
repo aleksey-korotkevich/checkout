@@ -137,8 +137,8 @@ h5 {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-row: auto auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
   margin-bottom: 40px;
 }
 
@@ -154,11 +154,19 @@ h5 {
   margin-bottom: 16px;
 }
 
-.checkout .policy, .policy a {
+.checkout .policy,
+.policy a {
   font-family: 'Graphik LC TT';
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
   color: var(--text-color-secondary);
+}
+
+@media screen and (max-width: 768px), (max-height: 320px) {
+  .payments {
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+  }
 }
 </style>
